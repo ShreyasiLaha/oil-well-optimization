@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WellTwin AI - CSS Optimization">
+    <title>WellTwin AI - CSS Optimization</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="css-opt.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-body">
+    <div class="overlay"></div>
+    
+    <!-- Top Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="logo">🛢️ <span>WellTwin AI</span></div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="digital-twin.html">Digital Twin</a></li>
+            <li><a href="css-opt.html" class="active">CSS Optimization</a></li>
+            <li><a href="#">SRP Optimization</a></li>
+            <li><a href="#">Analytics</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+            <div class="icon-btn">🔔</div>
+            <div class="icon-btn">👤</div>
+        </div>
+    </nav>
+
+    <main class="css-container">
+        <!-- Header -->
+        <header class="dash-header">
+            <div>
+                <h1>CSS Optimization</h1>
+                <p class="subtitle" style="margin-bottom: 0.5rem;">AI-powered steam injection and production cycle optimization</p>
+                <div class="well-info">
+                    <span class="info-item"><strong>Well:</strong> BGW-01</span>
+                    <span class="info-item"><strong>Current Cycle:</strong> Cycle 12</span>
+                    <span class="info-item status-normal"><strong>Status:</strong> 🟢 Active</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="css-grid">
+            <!-- Left Section: Current CSS Parameters -->
+            <section class="params-section">
+                <h2 class="section-title">Current CSS Parameters</h2>
+                <div class="params-grid">
+                    <div class="param-card dash-card">
+                        <div class="param-label">Steam Volume</div>
+                        <div class="param-value"><span id="valSteam">5000</span> kg/day</div>
+                        <input type="range" class="param-slider" min="3000" max="8000" value="5000" oninput="document.getElementById('valSteam').innerText = this.value">
+                    </div>
+                    
+                    <div class="param-card dash-card">
+                        <div class="param-label">Injection Pressure</div>
+                        <div class="param-value"><span id="valPress">35</span> bar</div>
+                        <input type="range" class="param-slider" min="15" max="60" value="35" oninput="document.getElementById('valPress').innerText = this.value">
+                    </div>
+                    
+                    <div class="param-card dash-card">
+                        <div class="param-label">Soak Time</div>
+                        <div class="param-value"><span id="valSoak">6</span> hours</div>
+                        <input type="range" class="param-slider" min="2" max="24" value="6" oninput="document.getElementById('valSoak').innerText = this.value">
+                    </div>
+                    
+                    <div class="param-card dash-card">
+                        <div class="param-label">Production Cut-off</div>
+                        <div class="param-value"><span id="valCut">120</span> BPD</div>
+                        <input type="range" class="param-slider" min="50" max="250" value="120" oninput="document.getElementById('valCut').innerText = this.value">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Middle Section: AI Optimization -->
+            <section class="ai-section dash-card">
+                <h2 class="ai-title">🤖 AI Recommended CSS Settings</h2>
+                
+                <div id="aiRecs" class="ai-recs">
+                    <div class="rec-item">
+                        <span>Recommended Steam:</span>
+                        <strong id="recSteam">5200 kg/day</strong>
+                    </div>
+                    <div class="rec-item">
+                        <span>Recommended Pressure:</span>
+                        <strong id="recPress">34 bar</strong>
+                    </div>
+                    <div class="rec-item">
+                        <span>Recommended Soak Time:</span>
+                        <strong id="recSoak">6.5 hours</strong>
+                    </div>
+                    <div class="rec-item accent-item">
+                        <span>Expected Production:</span>
+                        <strong id="recProd" class="primary-text">135 BPD</strong>
+                    </div>
+                </div>
+                
+                <button id="runOptBtn" class="btn btn-primary opt-btn">Run Optimization</button>
+                
+                <div id="optLoader" class="loader hidden">
+                    <div class="spinner"></div>
+                    <p>Optimizing parameters based on real-time neural model...</p>
+                </div>
+                
+            </section>
+
+            <!-- Right Section: Prediction -->
+            <section class="forecast-section dash-card">
+                <h2 class="section-title">Production Forecast</h2>
+                <div class="forecast-chart-container">
+                    <canvas id="forecastChart"></canvas>
+                </div>
+                <div class="forecast-metric">
+                    🟢 Expected Improvement: <strong>+12.5%</strong>
+                </div>
+            </section>
+        </div>
+
+        <!-- Bottom: CSS Cycle Timeline -->
+        <section class="timeline-section dash-card">
+            <h2 class="section-title">CSS Cycle Timeline</h2>
+            <div class="timeline">
+                <div class="step completed">
+                    <div class="step-icon">✔️</div>
+                    <div class="step-label">Steam Injection</div>
+                </div>
+                <div class="step active">
+                    <div class="step-icon">⏱️</div>
+                    <div class="step-label">Soaking</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🛢️</div>
+                    <div class="step-label">Production</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">❄️</div>
+                    <div class="step-label">Cooling</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🔄</div>
+                    <div class="step-label">Next Cycle</div>
+                </div>
+            </div>
+            <!-- Progress Bar -->
+            <div class="timeline-progress">
+                <div class="progress-bar" style="width: 35%;"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="dash-footer">
+        <p>WellTwin AI &bull; AI-Powered Well-to-Surface Optimization</p>
+    </footer>
+
+    <script>
+        // Chart.js Configuration
+        const ctx = document.getElementById('forecastChart').getContext('2d');
+        
+        let forecastChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+                datasets: [
+                    {
+                        label: 'Current Production',
+                        data: [120, 118, 115, 110, 105, 100, 95],
+                        borderColor: '#9ca3af',
+                        borderDash: [5, 5],
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: false
+                    },
+                    {
+                        label: 'AI Optimized Production',
+                        data: [135, 134, 131, 128, 125, 121, 118],
+                        borderColor: '#4ade80',
+                        backgroundColor: 'rgba(74, 222, 128, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { color: '#d1d5db', font: { family: 'Inter' } }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#9ca3af' }
+                    },
+                    y: {
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#9ca3af' },
+                        title: { display: true, text: 'BPD', color: '#9ca3af' }
+                    }
+                }
+            }
+        });
+
+        // Optimization Logic
+        const runOptBtn = document.getElementById('runOptBtn');
+        const optLoader = document.getElementById('optLoader');
+        const aiRecs = document.getElementById('aiRecs');
+
+        runOptBtn.addEventListener('click', () => {
+            // Get current slider values
+            const steam = parseInt(document.getElementById('valSteam').innerText);
+            const press = parseInt(document.getElementById('valPress').innerText);
+            const soak = parseInt(document.getElementById('valSoak').innerText);
+            
+            // Hide recs & button, show loader
+            aiRecs.style.opacity = '0.3';
+            runOptBtn.classList.add('hidden');
+            optLoader.classList.remove('hidden');
+            
+            setTimeout(() => {
+                // Calculate new optimal values based on slider inputs
+                document.getElementById('recSteam').innerText = (steam + 300) + ' kg/day';
+                document.getElementById('recPress').innerText = (press - 1) + ' bar';
+                document.getElementById('recSoak').innerText = (soak + 0.5) + ' hours';
+                
+                // Update chart
+                forecastChart.data.datasets[1].data = [142, 140, 138, 135, 130, 128, 125];
+                forecastChart.update();
+                
+                // Show recs & button
+                optLoader.classList.add('hidden');
+                runOptBtn.classList.remove('hidden');
+                aiRecs.style.opacity = '1';
+                aiRecs.classList.add('pulse-anim');
+                
+                setTimeout(() => aiRecs.classList.remove('pulse-anim'), 1000);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

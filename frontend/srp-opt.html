@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WellTwin AI - SRP Optimization">
+    <title>WellTwin AI - SRP Optimization</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="srp-opt.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-body">
+    <div class="overlay"></div>
+    
+    <!-- Top Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="logo">🛢️ <span>WellTwin AI</span></div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="digital-twin.html">Digital Twin</a></li>
+            <li><a href="css-opt.html">CSS Optimization</a></li>
+            <li><a href="srp-opt.html" class="active">SRP Optimization</a></li>
+            <li><a href="#">Analytics</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+            <div class="icon-btn">🔔</div>
+            <div class="icon-btn">👤</div>
+        </div>
+    </nav>
+
+    <main class="srp-container">
+        <!-- Header -->
+        <header class="dash-header">
+            <div>
+                <h1>SRP Optimization</h1>
+                <p class="subtitle" style="margin-bottom: 0.5rem;">AI-powered pump performance monitoring and optimization</p>
+                <div class="well-info">
+                    <span class="info-item"><strong>Well:</strong> BGW-01</span>
+                    <span class="info-item status-normal"><strong>Pump Status:</strong> 🟢 Running Normally</span>
+                </div>
+            </div>
+            
+            <!-- Section 5 AI Action: Run Pump Optimization -->
+            <div class="header-action">
+                <button id="runSrpOptBtn" class="btn btn-primary opt-btn-header">Run Pump Optimization</button>
+            </div>
+        </header>
+
+        <div id="optStatus" class="opt-status-msg hidden">
+            <div class="spinner-small"></div>
+            <span>Running neural analysis on pump performance...</span>
+        </div>
+
+        <div id="optComplete" class="opt-complete-msg hidden">
+            <span>✅ Optimization Complete</span>
+        </div>
+
+        <div class="srp-grid-top">
+            <!-- Section 1: Current Parameters -->
+            <section class="params-section">
+                <h2 class="section-title">Current Pump Parameters</h2>
+                <div class="params-grid">
+                    <div class="param-card dash-card">
+                        <div class="param-label">SPM</div>
+                        <div class="param-value">8 <span class="unit">strokes/min</span></div>
+                    </div>
+                    <div class="param-card dash-card">
+                        <div class="param-label">Stroke Length</div>
+                        <div class="param-value">42 <span class="unit">in</span></div>
+                    </div>
+                    <div class="param-card dash-card">
+                        <div class="param-label">VFD Speed</div>
+                        <div class="param-value">65 <span class="unit">%</span></div>
+                    </div>
+                    <div class="param-card dash-card">
+                        <div class="param-label">Pump Efficiency</div>
+                        <div class="param-value">87 <span class="unit">%</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: AI Recommendation -->
+            <section class="ai-section dash-card">
+                <h2 class="ai-title">🤖 AI Recommended Settings</h2>
+                
+                <div id="aiRecs" class="ai-recs">
+                    <div class="rec-item">
+                        <span>Recommended SPM:</span>
+                        <strong id="recSpm">7.5</strong>
+                    </div>
+                    <div class="rec-item">
+                        <span>Recommended Stroke:</span>
+                        <strong id="recStroke">40 in</strong>
+                    </div>
+                    <div class="rec-item">
+                        <span>Recommended VFD:</span>
+                        <strong id="recVfd">62%</strong>
+                    </div>
+                </div>
+                
+                <p class="ai-note">"Recommended settings are based on current well and reservoir conditions."</p>
+                
+                <button id="applyRecBtn" class="btn btn-secondary apply-btn">Apply Recommendation</button>
+            </section>
+        </div>
+
+        <div class="srp-grid-bottom">
+            <!-- Section 3: Performance Chart -->
+            <section class="chart-section dash-card">
+                <h2 class="section-title">Pump Performance &mdash; Last 24 Hours</h2>
+                <div class="srp-chart-container">
+                    <canvas id="srpChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Section 4: Failure & Risk Monitoring -->
+            <section class="risk-section">
+                <h2 class="section-title">Failure & Risk Monitoring</h2>
+                <div class="risk-grid">
+                    <div class="risk-card dash-card">
+                        <h3>Rod Floating Risk</h3>
+                        <div class="risk-status green">🟢 Low &mdash; 8%</div>
+                    </div>
+                    <div class="risk-card dash-card">
+                        <h3>Impact Loading</h3>
+                        <div class="risk-status green">🟢 Normal</div>
+                    </div>
+                    <div class="risk-card dash-card">
+                        <h3>Rod Failure Risk</h3>
+                        <div class="risk-status yellow">🟡 Moderate &mdash; 18%</div>
+                    </div>
+                </div>
+                
+                <div class="warning-banner">
+                    <span class="warn-icon">⚠️</span>
+                    <span class="warn-text"><strong>Monitor pump load</strong> if reservoir temperature continues to decrease.</span>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="dash-footer">
+        <p>WellTwin AI &bull; AI-Powered Well-to-Surface Optimization</p>
+    </footer>
+
+    <script>
+        // Chart.js Configuration
+        const ctx = document.getElementById('srpChart').getContext('2d');
+        
+        let srpChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['-24h', '-20h', '-16h', '-12h', '-8h', '-4h', 'Now'],
+                datasets: [
+                    {
+                        label: 'Pump Load (lbs)',
+                        data: [15200, 15400, 15300, 15800, 16100, 16400, 16500],
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Pump Efficiency (%)',
+                        data: [91, 90, 90, 89, 88, 87, 87],
+                        borderColor: '#38bdf8',
+                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#d1d5db', font: { family: 'Inter' } }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#9ca3af' }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#f59e0b' },
+                        title: { display: true, text: 'Load (lbs)', color: '#f59e0b' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        grid: { drawOnChartArea: false },
+                        ticks: { color: '#38bdf8' },
+                        title: { display: true, text: 'Efficiency (%)', color: '#38bdf8' }
+                    }
+                }
+            }
+        });
+
+        // Optimization Logic
+        const runSrpOptBtn = document.getElementById('runSrpOptBtn');
+        const optStatus = document.getElementById('optStatus');
+        const optComplete = document.getElementById('optComplete');
+        const aiRecs = document.getElementById('aiRecs');
+        const applyRecBtn = document.getElementById('applyRecBtn');
+
+        runSrpOptBtn.addEventListener('click', () => {
+            runSrpOptBtn.disabled = true;
+            runSrpOptBtn.style.opacity = '0.5';
+            
+            optComplete.classList.add('hidden');
+            optStatus.classList.remove('hidden');
+            aiRecs.style.opacity = '0.3';
+            
+            setTimeout(() => {
+                // Update AI Recs
+                document.getElementById('recSpm').innerText = '7.2';
+                document.getElementById('recStroke').innerText = '42 in';
+                document.getElementById('recVfd').innerText = '58%';
+                
+                optStatus.classList.add('hidden');
+                optComplete.classList.remove('hidden');
+                
+                aiRecs.style.opacity = '1';
+                aiRecs.classList.add('pulse-anim');
+                
+                setTimeout(() => aiRecs.classList.remove('pulse-anim'), 1000);
+                
+                runSrpOptBtn.disabled = false;
+                runSrpOptBtn.style.opacity = '1';
+            }, 2500);
+        });
+
+        applyRecBtn.addEventListener('click', () => {
+            applyRecBtn.innerText = "Applying...";
+            applyRecBtn.style.background = "#4ade80";
+            applyRecBtn.style.color = "#000";
+            
+            setTimeout(() => {
+                applyRecBtn.innerText = "Applied Successfully";
+                
+                // Reset button after 3s
+                setTimeout(() => {
+                    applyRecBtn.innerText = "Apply Recommendation";
+                    applyRecBtn.style.background = "rgba(255, 255, 255, 0.05)";
+                    applyRecBtn.style.color = "#fff";
+                }, 3000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

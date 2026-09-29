@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WellTwin AI - Analytics & Prediction">
+    <title>WellTwin AI - Analytics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="analytics.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-body">
+    <div class="overlay"></div>
+    
+    <!-- Top Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="logo">🛢️ <span>WellTwin AI</span></div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="digital-twin.html">Digital Twin</a></li>
+            <li><a href="css-opt.html">CSS Optimization</a></li>
+            <li><a href="srp-opt.html">SRP Optimization</a></li>
+            <li><a href="analytics.html" class="active">Analytics</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+            <div class="icon-btn">🔔</div>
+            <div class="icon-btn">👤</div>
+        </div>
+    </nav>
+
+    <main class="analytics-container">
+        <!-- Header -->
+        <header class="dash-header analytics-header">
+            <div>
+                <h1>Analytics & AI Prediction</h1>
+                <p class="subtitle">Understand well performance and predict future production (Simulated Data)</p>
+            </div>
+            <button id="reportBtn" class="btn btn-primary report-btn">Generate Optimization Report</button>
+        </header>
+
+        <!-- Section 1: Performance Overview -->
+        <section class="performance-overview">
+            <div class="overview-card dash-card">
+                <div class="card-title">Oil Production</div>
+                <div class="comparison">
+                    <span class="old-val">120</span> &rarr; <span class="new-val">135 BPD</span>
+                </div>
+                <div class="trend positive">&uarr; 12.5%</div>
+            </div>
+            <div class="overview-card dash-card">
+                <div class="card-title">Steam-Oil Ratio</div>
+                <div class="comparison">
+                    <span class="old-val">4.8</span> &rarr; <span class="new-val">4.2</span>
+                </div>
+                <div class="trend positive">&darr; 12.5%</div>
+            </div>
+            <div class="overview-card dash-card">
+                <div class="card-title">Energy Consumption</div>
+                <div class="comparison">
+                    <span class="old-val">85</span> &rarr; <span class="new-val">76 kWh</span>
+                </div>
+                <div class="trend positive">&darr; 10.5%</div>
+            </div>
+            <div class="overview-card dash-card">
+                <div class="card-title">Pump Efficiency</div>
+                <div class="comparison">
+                    <span class="old-val">82%</span> &rarr; <span class="new-val">87%</span>
+                </div>
+                <div class="trend positive">&uarr; 6.0%</div>
+            </div>
+        </section>
+
+        <div class="analytics-grid">
+            <!-- Section 2: Production Forecast Chart -->
+            <section class="chart-section dash-card">
+                <h2 class="section-title">7-Day Production Forecast</h2>
+                <div class="chart-container">
+                    <canvas id="forecastChart"></canvas>
+                </div>
+            </section>
+
+            <div class="side-sections">
+                <!-- Section 3: Risk Prediction -->
+                <section class="risk-prediction-card dash-card">
+                    <h2 class="section-title">⚠️ Predictive Risk Analysis</h2>
+                    <ul class="risk-list">
+                        <li>
+                            <span class="risk-label">Rod Failure Risk</span>
+                            <span class="risk-val yellow">18% &mdash; Moderate</span>
+                        </li>
+                        <li>
+                            <span class="risk-label">Pump Unsetting Risk</span>
+                            <span class="risk-val green">10% &mdash; Low</span>
+                        </li>
+                        <li>
+                            <span class="risk-label">Production Loss Risk</span>
+                            <span class="risk-val green">12% &mdash; Low</span>
+                        </li>
+                    </ul>
+                    <p class="risk-msg">"Early optimization can reduce operational risk."</p>
+                </section>
+
+                <!-- Section 4: AI Insights -->
+                <section class="ai-insights-card dash-card">
+                    <h2 class="section-title">🤖 AI Insights</h2>
+                    <ul class="insights-list">
+                        <li>&bull; Reservoir cooling is increasing oil viscosity.</li>
+                        <li>&bull; Optimized SRP settings can improve pump efficiency.</li>
+                        <li>&bull; Adjusting steam injection can improve production efficiency.</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <!-- Section 5: Expected Impact -->
+        <section class="impact-section">
+            <h2 class="section-title text-center">Expected Impact of Optimization</h2>
+            <div class="impact-grid">
+                <div class="impact-card dash-card">
+                    <div class="impact-icon">🛢️</div>
+                    <div class="impact-text">Higher Oil Recovery</div>
+                </div>
+                <div class="impact-card dash-card">
+                    <div class="impact-icon">⚡</div>
+                    <div class="impact-text">Lower Energy Consumption</div>
+                </div>
+                <div class="impact-card dash-card">
+                    <div class="impact-icon">🔥</div>
+                    <div class="impact-text">Reduced Steam Usage</div>
+                </div>
+                <div class="impact-card dash-card">
+                    <div class="impact-icon">🔧</div>
+                    <div class="impact-text">Fewer Equipment Failures</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="dash-footer">
+        <p>WellTwin AI &bull; AI-Powered Well-to-Surface Optimization</p>
+    </footer>
+
+    <script>
+        // Chart.js Configuration
+        const ctx = document.getElementById('forecastChart').getContext('2d');
+        
+        let forecastChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+                datasets: [
+                    {
+                        label: 'Current Scenario (BPD)',
+                        data: [120, 118, 116, 114, 111, 108, 105],
+                        borderColor: '#9ca3af',
+                        borderDash: [5, 5],
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: false
+                    },
+                    {
+                        label: 'AI Optimized Scenario (BPD)',
+                        data: [120, 124, 127, 131, 133, 134, 135],
+                        borderColor: '#4ade80',
+                        backgroundColor: 'rgba(74, 222, 128, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#d1d5db', font: { family: 'Inter' } }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#9ca3af' }
+                    },
+                    y: {
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#9ca3af' },
+                        title: { display: true, text: 'BPD', color: '#9ca3af' }
+                    }
+                }
+            }
+        });
+
+        // Report Button Logic
+        const reportBtn = document.getElementById('reportBtn');
+        reportBtn.addEventListener('click', () => {
+            const originalText = reportBtn.innerText;
+            reportBtn.innerText = "Generating...";
+            reportBtn.disabled = true;
+            
+            setTimeout(() => {
+                reportBtn.innerText = "Report Downloaded";
+                reportBtn.style.background = "#4ade80";
+                reportBtn.style.color = "#000";
+                
+                setTimeout(() => {
+                    reportBtn.innerText = originalText;
+                    reportBtn.style.background = "";
+                    reportBtn.style.color = "";
+                    reportBtn.disabled = false;
+                }, 3000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

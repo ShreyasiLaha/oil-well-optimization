@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WellTwin AI - Digital Twin Visualization">
+    <title>WellTwin AI - Digital Twin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="digital-twin.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <div class="overlay"></div>
+    
+    <!-- Top Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="logo">🛢️ <span>WellTwin AI</span></div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="digital-twin.html" class="active">Digital Twin</a></li>
+            <li><a href="#">CSS Optimization</a></li>
+            <li><a href="#">SRP Optimization</a></li>
+            <li><a href="#">Analytics</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+            <div class="icon-btn">🔔</div>
+            <div class="icon-btn">👤</div>
+        </div>
+    </nav>
+
+    <main class="twin-container">
+        <!-- Main Diagram Area -->
+        <section class="twin-diagram-section">
+            <div class="diagram-header">
+                <h1>Baghewala Field &mdash; 3D Digital Twin</h1>
+                <p>Virtual representation of wellbore BGW-01</p>
+            </div>
+            
+            <div class="diagram-canvas">
+                <!-- 4. Surface Production -->
+                <div class="twin-node surface-node">
+                    <div class="node-icon">🏭</div>
+                    <div class="node-info">
+                        <h3>Surface Production</h3>
+                        <p>Oil Production: <span>120 BPD</span></p>
+                        <p>Energy: <span>85 kWh</span></p>
+                    </div>
+                </div>
+
+                <div class="flow-line oil-flow"></div>
+
+                <!-- 3. SRP Pump -->
+                <div class="twin-node pump-node">
+                    <div class="node-icon">⚙️</div>
+                    <div class="node-info">
+                        <h3>SRP Pump</h3>
+                        <p>SPM: <span>8</span></p>
+                        <p>Stroke: <span>42 in</span></p>
+                        <p>Efficiency: <span>87%</span></p>
+                    </div>
+                </div>
+
+                <div class="flow-line bi-flow">
+                    <div class="flow-up oil-flow-anim"></div>
+                    <div class="flow-down steam-flow-anim"></div>
+                </div>
+
+                <!-- 2. Wellbore -->
+                <div class="twin-node wellbore-node">
+                    <div class="node-icon">🕳️</div>
+                    <div class="node-info">
+                        <h3>Wellbore</h3>
+                        <p>Sensors: <span class="status-ok">Active</span></p>
+                        <p>Pipe Integrity: <span class="status-ok">98%</span></p>
+                    </div>
+                </div>
+
+                <div class="flow-line bi-flow">
+                    <div class="flow-up oil-flow-anim"></div>
+                    <div class="flow-down steam-flow-anim"></div>
+                </div>
+
+                <!-- 1. Underground Reservoir -->
+                <div class="twin-node reservoir-node">
+                    <div class="node-icon">🪨</div>
+                    <div class="node-info">
+                        <h3>Underground Reservoir</h3>
+                        <p>Heavy Oil</p>
+                        <p>Temperature: <span class="accent-temp">47°C</span></p>
+                        <p>Pressure: <span class="accent-press">32 bar</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Side Panel -->
+        <aside class="twin-sidebar">
+            <div class="ai-analysis-card dash-card">
+                <h2 class="ai-title">🤖 Digital Twin Analysis</h2>
+                
+                <ul class="analysis-list">
+                    <li><span>Reservoir Condition:</span> <strong class="green">Normal</strong></li>
+                    <li><span>Oil Mobility:</span> <strong class="yellow">Moderate</strong></li>
+                    <li><span>Pump Condition:</span> <strong class="green">Stable</strong></li>
+                    <li><span>Production Trend:</span> <strong class="green">Increasing</strong></li>
+                    <li><span>Failure Risk:</span> <strong class="green">Low</strong></li>
+                </ul>
+
+                <button id="simBtn" class="btn btn-primary sim-btn">Run AI Simulation</button>
+                
+                <div id="simLoader" class="loader hidden">
+                    <div class="spinner"></div>
+                    <p>Running Neural Simulation...</p>
+                </div>
+                
+                <div id="simResult" class="sim-result hidden">
+                    <h4>✅ Simulation Complete</h4>
+                    <p>Expected production after optimization: <strong>135 BPD</strong></p>
+                </div>
+            </div>
+
+            <div class="controls-card dash-card">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab('css')">CSS Parameters</button>
+                    <button class="tab-btn" onclick="openTab('srp')">SRP Parameters</button>
+                    <button class="tab-btn" onclick="openTab('health')">Well Health</button>
+                </div>
+                
+                <div id="css" class="tab-content active">
+                    <p><strong>Injection Rate:</strong> 5000 kg/day</p>
+                    <p><strong>Steam Quality:</strong> 80%</p>
+                    <p><strong>Soak Time:</strong> 6 hours</p>
+                </div>
+                <div id="srp" class="tab-content hidden">
+                    <p><strong>Pump Speed:</strong> 8 SPM</p>
+                    <p><strong>Stroke Length:</strong> 42 in</p>
+                    <p><strong>Motor Load:</strong> 65%</p>
+                </div>
+                <div id="health" class="tab-content hidden">
+                    <p><strong>Overall Status:</strong> Normal</p>
+                    <p><strong>Rod Stress:</strong> Low</p>
+                    <p><strong>Maintenance:</strong> Due in 45 days</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="dash-footer">
+        <p>WellTwin AI &bull; AI-Powered Well-to-Surface Optimization</p>
+    </footer>
+
+    <script>
+        // AI Simulation Logic
+        const simBtn = document.getElementById('simBtn');
+        const simLoader = document.getElementById('simLoader');
+        const simResult = document.getElementById('simResult');
+
+        simBtn.addEventListener('click', () => {
+            simBtn.classList.add('hidden');
+            simLoader.classList.remove('hidden');
+            
+            setTimeout(() => {
+                simLoader.classList.add('hidden');
+                simResult.classList.remove('hidden');
+                simResult.classList.add('fade-in');
+            }, 2500);
+        });
+
+        // Tabs Logic
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.remove('hidden');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
