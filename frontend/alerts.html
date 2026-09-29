@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WellTwin AI - Alerts & Reports">
+    <title>WellTwin AI - Alerts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="alerts.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <div class="overlay"></div>
+    
+    <!-- Top Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="logo">🛢️ <span>WellTwin AI</span></div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="digital-twin.html">Digital Twin</a></li>
+            <li><a href="css-opt.html">CSS Optimization</a></li>
+            <li><a href="srp-opt.html">SRP Optimization</a></li>
+            <li><a href="analytics.html">Analytics</a></li>
+            <li><a href="alerts.html" class="active">Alerts</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+            <div class="icon-btn">🔔</div>
+            <div class="icon-btn">👤</div>
+        </div>
+    </nav>
+
+    <main class="alerts-container">
+        <!-- Header -->
+        <header class="dash-header alerts-header">
+            <div>
+                <h1>Alerts & Reports</h1>
+                <p class="subtitle" style="margin-bottom: 0.5rem;">Monitor operational risks and generate optimization summaries</p>
+                <div class="well-info">
+                    <span class="info-item"><strong>Well:</strong> BGW-01</span>
+                    <span class="info-item status-normal"><strong>System Status:</strong> 🟢 Online</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="alerts-grid">
+            <!-- Left Column -->
+            <div class="left-col">
+                <!-- Section 1: Active Alerts -->
+                <section class="active-alerts-section">
+                    <h2 class="section-title">Active Alerts</h2>
+                    
+                    <div class="alert-card yellow-alert dash-card">
+                        <div class="alert-top">
+                            <div class="alert-badge yellow-badge">🟡 Moderate</div>
+                            <h3 class="alert-title">Rod Failure Risk</h3>
+                        </div>
+                        <p class="alert-desc">Risk increased to 18%.</p>
+                        <p class="alert-rec"><strong>Recommended:</strong> Monitor pump load and SRP performance.</p>
+                        <button class="btn btn-secondary alert-btn">View Details</button>
+                    </div>
+
+                    <div class="alert-card green-alert dash-card">
+                        <div class="alert-top">
+                            <div class="alert-badge green-badge">🟢 Low</div>
+                            <h3 class="alert-title">Reservoir Cooling</h3>
+                        </div>
+                        <p class="alert-desc">Temperature is gradually decreasing.</p>
+                        <p class="alert-rec"><strong>Recommended:</strong> Review CSS settings.</p>
+                        <button class="btn btn-secondary alert-btn">View Details</button>
+                    </div>
+
+                    <div class="alert-card green-alert dash-card">
+                        <div class="alert-top">
+                            <div class="alert-badge green-badge">🟢 Normal</div>
+                            <h3 class="alert-title">Pump Performance</h3>
+                        </div>
+                        <p class="alert-desc">Pump efficiency is currently 87%.</p>
+                        <button class="btn btn-secondary alert-btn" style="margin-top: 1.5rem;">View Details</button>
+                    </div>
+                </section>
+
+                <!-- Section 2: Alert History -->
+                <section class="alert-history-section dash-card">
+                    <h2 class="section-title">Alert History</h2>
+                    <div class="table-responsive">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Alert</th>
+                                    <th>Severity</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sep 29</td>
+                                    <td>Rod Failure Risk</td>
+                                    <td><span class="badge badge-yellow">Moderate</span></td>
+                                    <td>Monitoring</td>
+                                </tr>
+                                <tr>
+                                    <td>Sep 28</td>
+                                    <td>Reservoir Cooling</td>
+                                    <td><span class="badge badge-green">Low</span></td>
+                                    <td>Resolved</td>
+                                </tr>
+                                <tr>
+                                    <td>Sep 27</td>
+                                    <td>Pump Load</td>
+                                    <td><span class="badge badge-green">Low</span></td>
+                                    <td>Resolved</td>
+                                </tr>
+                                <tr>
+                                    <td>Sep 26</td>
+                                    <td>Steam Efficiency</td>
+                                    <td><span class="badge badge-green">Low</span></td>
+                                    <td>Resolved</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-col">
+                <!-- Section 3: Optimization Summary -->
+                <section class="opt-summary-card dash-card">
+                    <h2 class="section-title ai-summary-title">🤖 Latest AI Optimization Summary</h2>
+                    
+                    <div class="summary-metrics">
+                        <div class="sum-item">
+                            <span class="sum-label">Oil Production</span>
+                            <span class="sum-val">120 &rarr; <span class="green-text">135 BPD</span></span>
+                        </div>
+                        <div class="sum-item">
+                            <span class="sum-label">Energy</span>
+                            <span class="sum-val">85 &rarr; <span class="green-text">76 kWh</span></span>
+                        </div>
+                        <div class="sum-item">
+                            <span class="sum-label">Pump Efficiency</span>
+                            <span class="sum-val">82% &rarr; <span class="green-text">87%</span></span>
+                        </div>
+                        <div class="sum-item">
+                            <span class="sum-label">Steam-Oil Ratio</span>
+                            <span class="sum-val">4.8 &rarr; <span class="green-text">4.2</span></span>
+                        </div>
+                    </div>
+                    
+                    <button id="generateBtn" class="btn btn-primary gen-report-btn">📄 Generate Report</button>
+                    
+                    <div id="reportToast" class="toast hidden">
+                        ✅ Optimization report generated successfully.
+                    </div>
+                </section>
+
+                <!-- Section 4: Quick Actions -->
+                <section class="quick-actions-section dash-card">
+                    <h2 class="section-title">Quick Actions</h2>
+                    <div class="action-buttons">
+                        <a href="dashboard.html" class="btn btn-secondary action-btn">View Dashboard</a>
+                        <button class="btn btn-secondary action-btn">Run New Analysis</button>
+                        <button class="btn btn-secondary action-btn" onclick="document.getElementById('generateBtn').click()">Generate Report</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="dash-footer">
+        <p>WellTwin AI &bull; AI-Powered Well-to-Surface Optimization</p>
+    </footer>
+
+    <script>
+        // Generate Report Notification Logic
+        const generateBtn = document.getElementById('generateBtn');
+        const reportToast = document.getElementById('reportToast');
+
+        generateBtn.addEventListener('click', () => {
+            generateBtn.disabled = true;
+            generateBtn.innerText = "Generating...";
+            
+            setTimeout(() => {
+                generateBtn.innerText = "📄 Generate Report";
+                generateBtn.disabled = false;
+                
+                reportToast.classList.remove('hidden');
+                reportToast.classList.add('show');
+                
+                setTimeout(() => {
+                    reportToast.classList.remove('show');
+                    setTimeout(() => reportToast.classList.add('hidden'), 300);
+                }, 3000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
